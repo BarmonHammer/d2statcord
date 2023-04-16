@@ -1,4 +1,5 @@
-use rustgie::types::destiny::{DamageType, DestinyItemSubType, DestinyItemType};
+use d2statfind::WeaponSlot;
+use rustgie::types::destiny::{DamageType, DestinyItemSubType, DestinyItemType, TierType};
 use rustgie::types::*;
 use serenity::builder::CreateApplicationCommand;
 use serenity::model::prelude::command::CommandOptionType;
@@ -36,37 +37,73 @@ pub fn register(command: &mut CreateApplicationCommand) -> &mut CreateApplicatio
             option
                 .name("weapon type")
                 .description("Type of weapon")
-                .kind(CommandOptionType::String)
-                .add_string_choice("Auto Rifle", DestinyItemSubType::AutoRifle)
-                .add_string_choice("Shotgun", DestinyItemSubType::Shotgun)
-                .add_string_choice("Machine Gun", DestinyItemSubType::Machinegun)
-                .add_string_choice("Hand Cannon", DestinyItemSubType::HandCannon)
-                .add_string_choice("Rocket Launcher", DestinyItemSubType::HandCannon)
-                .add_string_choice("Fusion Rifle", DestinyItemSubType::FusionRifle)
-                .add_string_choice("Sniper Rifle", DestinyItemSubType::SniperRifle)
-                .add_string_choice("Pulse Rifle", DestinyItemSubType::PulseRifle)
-                .add_string_choice("Scout Rifle", DestinyItemSubType::ScoutRifle)
-                .add_string_choice("Sidearm", DestinyItemSubType::Sidearm)
-                .add_string_choice("Sword", DestinyItemSubType::Sword)
-                .add_string_choice("Linear Fusion Rifle", DestinyItemSubType::FusionRifleLine)
-                .add_string_choice("Grenade Launcher", DestinyItemSubType::GrenadeLauncher)
-                .add_string_choice("Submachine Gun", DestinyItemSubType::SubmachineGun)
-                .add_string_choice("Trace Rifle", DestinyItemSubType::TraceRifle)
-                .add_string_choice("Bow", DestinyItemSubType::Bow)
-                .add_string_choice("Glaive", DestinyItemSubType::Glaive)
+                .kind(CommandOptionType::Integer)
+                .add_int_choice("Auto Rifle", DestinyItemSubType::AutoRifle as i32)
+                .add_int_choice("Shotgun", DestinyItemSubType::Shotgun as i32)
+                .add_int_choice("Machine Gun", DestinyItemSubType::Machinegun as i32)
+                .add_int_choice("Hand Cannon", DestinyItemSubType::HandCannon as i32)
+                .add_int_choice("Rocket Launcher", DestinyItemSubType::HandCannon as i32)
+                .add_int_choice("Fusion Rifle", DestinyItemSubType::FusionRifle as i32)
+                .add_int_choice("Sniper Rifle", DestinyItemSubType::SniperRifle as i32)
+                .add_int_choice("Pulse Rifle", DestinyItemSubType::PulseRifle as i32)
+                .add_int_choice("Scout Rifle", DestinyItemSubType::ScoutRifle as i32)
+                .add_int_choice("Sidearm", DestinyItemSubType::Sidearm as i32)
+                .add_int_choice("Sword", DestinyItemSubType::Sword as i32)
+                .add_int_choice(
+                    "Linear Fusion Rifle",
+                    DestinyItemSubType::FusionRifleLine as i32,
+                )
+                .add_int_choice(
+                    "Grenade Launcher",
+                    DestinyItemSubType::GrenadeLauncher as i32,
+                )
+                .add_int_choice("Submachine Gun", DestinyItemSubType::SubmachineGun as i32)
+                .add_int_choice("Trace Rifle", DestinyItemSubType::TraceRifle as i32)
+                .add_int_choice("Bow", DestinyItemSubType::Bow as i32)
+                .add_int_choice("Glaive", DestinyItemSubType::Glaive as i32)
                 .required(false)
-                .set_autocomplete(true)
         })
         .create_option(|option| {
             option
                 .name("Energy Type")
-                .kind(CommandOptionType::String)
-                .add_string_choice("Kinetic", DamageType::Kinetic)
-                .add_string_choice("Strand", DamageType::Strand)
-                .add_string_choice("Stasis", DamageType::Stasis)
-                .add_string_choice("Arc", DamageType::Arc)
-                .add_string_choice("Solar", DamageType::Thermal)
-                .add_string_choice("Void", DamageType::Void)
-                .required(false).set_autocomplete(true)
+                .kind(CommandOptionType::Integer)
+                .add_int_choice("Kinetic", DamageType::Kinetic as i32)
+                .add_int_choice("Strand", DamageType::Strand as i32)
+                .add_int_choice("Stasis", DamageType::Stasis as i32)
+                .add_int_choice("Arc", DamageType::Arc as i32)
+                .add_int_choice("Solar", DamageType::Thermal as i32)
+                .add_int_choice("Void", DamageType::Void as i32)
+                .required(false)
+        })
+        .create_option(|option| {
+            option
+                .name("Slot")
+                .kind(CommandOptionType::Integer)
+                .add_int_choice("Top", WeaponSlot::Top as i32)
+                .add_int_choice("Middle", WeaponSlot::Middle as i32)
+                .add_int_choice("Bottom", WeaponSlot::Bottom as i32)
+        })
+        .create_option(|option| {
+            option
+                .name("Adept")
+                .kind(CommandOptionType::Boolean)
+                .required(false)
+        })
+        .create_option(|option| {
+            option
+                .name("Craftable")
+                .kind(CommandOptionType::Boolean)
+                .required(false)
+        })
+        .create_option(|option| {
+            option
+                .name("Rarity")
+                .kind(CommandOptionType::Integer)
+                .add_int_choice("Legendary", TierType::Superior as i32)
+                .add_int_choice("Exotic", TierType::Exotic as i32)
+                .add_int_choice("Rare", TierType::Rare as i32)
+                .add_int_choice("Uncommon", TierType::Common as i32)
+                .add_int_choice("Common", TierType::Basic as i32)
+                .required(false)
         })
 }

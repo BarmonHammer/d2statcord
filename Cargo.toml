@@ -9,4 +9,4 @@ edition = "2021"
 d2statfind = {git="https://github.com/BarmonHammer/d2statfind.git"}
 serenity = "0.11"
 tokio = { version = "1.21.2", features = ["full"] }
-rustgie = { git = "https://github.com/BarmonHammer/rustgie.git", rev = "6b8c748" }
+rustgie = { git = "https://github.com/BarmonHammer/rustgie.git" }

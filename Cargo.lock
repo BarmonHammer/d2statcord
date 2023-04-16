@@ -283,7 +283,7 @@ name = "d2statcord"
 version = "0.1.0"
 dependencies = [
  "d2statfind",
- "rustgie",
+ "rustgie 0.3.0-beta (git+https://github.com/BarmonHammer/rustgie.git)",
  "serenity",
  "tokio",
 ]
@@ -291,13 +291,13 @@ dependencies = [
 [[package]]
 name = "d2statfind"
 version = "0.1.0"
-source = "git+https://github.com/BarmonHammer/d2statfind.git#76fa45820928d556ce6e94bd5b0d06842075385d"
+source = "git+https://github.com/BarmonHammer/d2statfind.git#30c9006d9e3fdb8b77012810c6eaf16f177d809a"
 dependencies = [
  "async-trait",
  "chrono",
  "num_enum",
  "reqwest",
- "rustgie",
+ "rustgie 0.3.0-beta (git+https://github.com/BarmonHammer/rustgie.git?rev=6b8c748)",
  "serde",
  "tokio",
 ]
@@ -1235,7 +1235,19 @@ source = "git+https://github.com/BarmonHammer/rustgie.git?rev=6b8c748#6b8c748298
 dependencies = [
  "anyhow",
  "reqwest",
- "rustgie_types",
+ "rustgie_types 0.3.0-beta (git+https://github.com/BarmonHammer/rustgie.git?rev=6b8c748)",
+ "serde",
+ "time 0.3.20",
+]
+
+[[package]]
+name = "rustgie"
+version = "0.3.0-beta"
+source = "git+https://github.com/BarmonHammer/rustgie.git#9e07b54d606596ced4a0947f2d5289a6b997809a"
+dependencies = [
+ "anyhow",
+ "reqwest",
+ "rustgie_types 0.3.0-beta (git+https://github.com/BarmonHammer/rustgie.git)",
  "serde",
  "time 0.3.20",
 ]
@@ -1247,6 +1259,21 @@ source = "git+https://github.com/BarmonHammer/rustgie.git?rev=6b8c748#6b8c748298
 dependencies = [
  "anyhow",
  "enumflags2",
+ "serde",
+ "serde_json",
+ "serde_repr",
+ "serde_with",
+ "time 0.3.20",
+]
+
+[[package]]
+name = "rustgie_types"
+version = "0.3.0-beta"
+source = "git+https://github.com/BarmonHammer/rustgie.git#9e07b54d606596ced4a0947f2d5289a6b997809a"
+dependencies = [
+ "anyhow",
+ "enumflags2",
+ "num_enum",
  "serde",
  "serde_json",
  "serde_repr",
