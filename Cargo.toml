@@ -1,0 +1,12 @@
+[package]
+name = "d2statcord"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+d2statfind = {git="https://github.com/BarmonHammer/d2statfind.git"}
+serenity = "0.11"
+tokio = { version = "1.21.2", features = ["full"] }
+rustgie = { git = "https://github.com/BarmonHammer/rustgie.git", rev = "6b8c748" }
